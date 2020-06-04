@@ -1,0 +1,103 @@
+<div class="animated fadeIn">
+    <div class="row">
+
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <strong>Commande </strong>
+                </div>
+                <div class="card-body">
+
+
+                    <div class="form-group row">
+                        <label class="col-md-3 col-form-label" for="id">ID</label>
+                        <div class="col-md-9">
+                            <input type="text" name="id" id="id" value="{{commande.id}}" class="form-control"
+                                placeholder="ID" disabled>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-md-3 col-form-label" for="field_commandeDesc">Description </label>
+                        <div class="col-md-9">
+
+                            <input type="text" name="commandeDesc" id="field_commandeDesc"
+                                 class="form-control" value="{{commande.commandeDesc}}" placeholder="Description commande" disabled/>
+                        </div>
+                    </div>
+
+
+
+                    <div class="form-group row">
+                        <label class="col-md-3 col-form-label" for="field_totalHt">total Ht</label>
+                        <div class="col-md-9">
+                            <input type="number" class="form-control" name="totalHt" id="field_totalHt"
+                                 value="{{commande.totalHt}}" placeholder="total Ht" disabled/>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-md-3 col-form-label" for="field_totalTva">total Tva</label>
+                        <div class="col-md-9">
+                            <input type="number" class="form-control" name="totalTva" id="field_totalTva"
+                                 value="{{commande.totalTva}}" placeholder="total Tva" disabled/>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-md-3 col-form-label" for="field_totalTtc">total Ttc</label>
+                        <div class="col-md-9">
+                            <input type="number" class="form-control" name="totalTtc" id="field_totalTtc"
+                                 value="{{commande.totalTtc}}" placeholder="total Ttc" disabled/>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-md-3 col-form-label" for="commandeDate">Date commande</label>
+                        <div class="col-md-9">
+                            <input class="form-control" name="commandeDate"  type="text"
+                                id="commandeDate" value="{{commande.commandeDate | date:'shortDate'}}" placeholder="Choisir une date" disabled/>
+
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-md-3 col-form-label" for="expectedDelivery">Date de livraison prévue</label>
+                        <div class="col-md-9">
+                            <input class="form-control" name="expectedDelivery" 
+                                type="text" id="expectedDelivery" value="{{commande.expectedDelivery | date:'shortDate'}}" placeholder="Choisir une date" disabled/>
+
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-md-3 col-form-label" for="field_totalTtc">TVA Moyenne</label>
+                        <div class="col-md-9">
+                            <input type="text" class="form-control" name="tvaMoyenne" id="field_tvaMoyenne"
+                                 value="{{commande.tvaMoyenne}}" placeholder="TVA Moyenne" disabled/>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-md-3 col-form-label" for="field_provider">Fournisseur </label>
+                        <div class="col-md-9">
+                            <div *ngIf="commande.provider">
+                                <a
+                                    [routerLink]="['/maitre-ouvrage', commande.provider?.id, 'view']">{{ commande.provider?.providerName }}</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <button type="button" class="btn btn-sm btn-danger" (click)="previousState()"><i
+                            class="fa fa-ban"></i> Retour</button>
+                    <button type="button" class="btn btn-sm btn-primary" id="modify-entity"
+                        [routerLink]="['/commande', commande.id, 'edit']"><i class="fa fa-dot-circle-o"></i>
+                        Modifier</button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

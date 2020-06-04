@@ -1,0 +1,34 @@
+<div class="animated fadeIn">
+    <div class="row">
+
+        <div class="col-md-6">
+            <div class="card">
+                <form *ngIf="fournisseur" name="deleteForm" (ngSubmit)="confirmDelete(fournisseur?.id!)">
+                    <div class="card-header">
+                        <strong>
+                            Confirmer l'opération de suppression
+                        </strong>
+                    </div>
+                    <div class="card-body">
+
+                        <div>
+
+
+                            <p> Etes vous sûr de vouloir supprimer ce fournisseur d'affaire N°: {{fournisseur?.id}}?
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="card-footer">
+
+                        <button type="button" class="btn btn-sm btn-danger" (click)="cancel()"><i class="fa fa-ban"></i>
+                            Non</button>
+                        <button type="submit" class="btn btn-sm btn-primary" id="ok-entity"><i class="fa fa-check"></i>
+                            Oui</button>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
