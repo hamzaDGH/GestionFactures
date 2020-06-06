@@ -1,0 +1,121 @@
+<div>
+    <div class="card">
+      <div class="card-body">
+        <div class="row align-items-center">
+          <div class="col-12 col-xl mb-3 mb-xl-0">
+            <h2 id="page-heading">
+              <span>Facture </span>
+            </h2>
+          </div>
+          <div class="col-6 col-sm-4 col-md-2  mb-3 mb-xl-0">
+            <button type="button" [routerLink]="['/facture/new']" class="btn btn-primary">Ajouter</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="alert alert-warning" id="no-result" *ngIf="factures?.length === 0">
+      <span jhiTranslate="btpprojectApp.facture.home.notFound">Aucun facture trouvé !</span>
+    </div>
+    <div class="table-responsive" id="entities" *ngIf="factures?.length > 0">
+      <div class="col-lg-6">
+        <div class="card">
+          <div class="card-header">
+            <i class="fa fa-align-justify"></i> Striped Table
+          </div>
+          <div class="form-group">
+            <input class="form-control" type="text" placeholder="search" [(ngModel)]="searchTerm" />
+          </div>
+          <div class="card-body">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th [class.active]="order === 'id'" (click)="setOrder('id')">ID
+                    <span [hidden]="reverse">▼</span><span [hidden]="!reverse">▲</span>
+                  </th>
+                  <th [class.active]="order === 'numClient'" (click)="setOrder('numClient')">Numéro client
+                    <span [hidden]="reverse">▼</span><span [hidden]="!reverse">▲</span>
+                  </th>
+                  <th [class.active]="order === 'numFacture'" (click)="setOrder('numFacture')">Numéro de facture
+                    <span [hidden]="reverse">▼</span><span [hidden]="!reverse">▲</span>
+                  </th>
+                  <th [class.active]="order === 'dateDebut'" (click)="setOrder('dateDebut')">Date d'échéance
+                    <span [hidden]="reverse">▼</span><span [hidden]="!reverse">▲</span>
+                  </th>
+                  <th [class.active]="order === 'dateFin'" (click)="setOrder('dateFin')">Date de transaction
+                    <span [hidden]="reverse">▼</span><span [hidden]="!reverse">▲</span>
+                  </th>
+                  <th [class.active]="order === 'beneficiaire'" (click)="setOrder('beneficiaire')">Bénéficiaire
+                    <span [hidden]="reverse">▼</span><span [hidden]="!reverse">▲</span>
+                  </th>
+                  <th [class.active]="order === 'delai'" (click)="setOrder('delai')">Date limite de paiement
+                    <span [hidden]="reverse">▼</span><span [hidden]="!reverse">▲</span>
+                  </th>
+                  <th [class.active]="order === 'isPayed'" (click)="setOrder('isPayed')">Payée ?
+                    <span [hidden]="reverse">▼</span><span [hidden]="!reverse">▲</span>
+                  </th>
+                  <th [class.active]="order === 'montant'" (click)="setOrder('montant')">Montant
+                    <span [hidden]="reverse">▼</span><span [hidden]="!reverse">▲</span>
+                  </th>
+                  <th [class.active]="order === 'espaceService'" (click)="setOrder('espaceService')">Espace service
+                    <span [hidden]="reverse">▼</span><span [hidden]="!reverse">▲</span>
+                  </th>
+                  <th [class.active]="order === 'numRecu'" (click)="setOrder('numRecu')">Numéro de reçue
+                    <span [hidden]="reverse">▼</span><span [hidden]="!reverse">▲</span>
+                  </th>
+                  <th [class.active]="order === 'numTransaction'" (click)="setOrder('numTransaction')">Numéro de transaction
+                    <span [hidden]="reverse">▼</span><span [hidden]="!reverse">▲</span>
+                  </th>
+                  <th [class.active]="order === 'reference'" (click)="setOrder('reference')">Référence
+                    <span [hidden]="reverse">▼</span><span [hidden]="!reverse">▲</span>
+                  </th>
+                  <th [class.active]="order === 'fournisseur'" (click)="setOrder('fournisseur')">Fournisseur
+                    <span [hidden]="reverse">▼</span><span [hidden]="!reverse">▲</span>
+                  </th>
+                  <th> Actions </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr
+                  *ngFor="let facture of  factures | filter:searchTerm |orderBy: order : reverse:'case-insensitive' | paginate : { itemsPerPage: 10, currentPage: pageNumber} ; let i = index">
+                  <td>{{ facture.id }}</td>
+                  <td>{{ facture.numClient }}</td>
+                  <td>{{ facture.numFacture }}</td>
+                  <td>{{ facture.dateDebut | date: 'MM/yyyy' }}</td>
+                  <td>{{ facture.dateFin | date: 'dd/MM/yyyy' }}</td>
+                  <td>{{ facture.beneficiaire }}</td>
+                  <td>{{ facture.delai | date: 'dd/MM/yyyy' }}</td>
+                  <td>{{ facture.isPayed ? 'OUI' : 'NON'  }}</td>
+                  <td>{{ facture.montant }}</td>
+                  <td>{{ facture.espaceService }}</td>
+                  <td>{{ facture.numRecu }}</td>
+                  <td>{{ facture.numTransaction }}</td>
+                  <td>{{ facture.reference }}</td>
+                  <td>
+                    <div *ngIf="facture.fournisseur">
+                      <a [routerLink]="['/fournisseur', facture.fournisseur?.id, 'view']">{{ facture.fournisseur?.nomFournisseur }}</a>
+                    </div>
+                  </td>
+                  <td>
+                    <button id="modify-entity" [routerLink]="['/facture', facture.id, 'edit']"
+                      class="btn btn-outline-primary" >
+                      Modifier
+                    </button>
+                    <button id="delete-entity" (click)="delete(facture)" class="btn btn-outline-danger" >
+                      Supprimer
+                    </button>
+                    <button id="view-entity" [routerLink]="['/facture', facture.id, 'view']"
+                      class="btn btn-outline-success" >
+                      Consuler
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <div class="env-pagination">
+              <pagination-controls (pageChange)="pageNumber = $event"></pagination-controls>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

@@ -1,0 +1,49 @@
+<div class="animated fadeIn">
+    <div class="row">
+
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <strong>Facture </strong>
+                </div>
+                <div class="card-body">
+
+
+                    <div class="form-group row">
+                        <label class="col-md-3 col-form-label" for="id">ID</label>
+                        <div class="col-md-9">
+                            <input type="text" name="id" id="id" value="{{facture.id}}" class="form-control"
+                                placeholder="ID" disabled>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-md-3 col-form-label" for="field_nomFacture">Nom du Facture </label>
+                        <div class="col-md-9">
+
+                            <input type="text" name="nomFacture" id="field_nomFacture"
+                                 class="form-control" value="{{facture.nomFacture}}" placeholder="Nom du facture" disabled/>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-md-3 col-form-label" for="field_secteur">Sec</label>
+                        <div class="col-md-9">
+                            <input type="text" class="form-control" name="secteur" id="field_secteur"
+                                 value="{{facture.secteur}}" placeholder="Secteur" disabled/>
+                        </div>
+                    </div>
+
+                <div class="card-footer">
+                    <button type="button" class="btn btn-sm btn-danger" (click)="previousState()"><i
+                            class="fa fa-ban"></i> Retour</button>
+                    <button type="button" class="btn btn-sm btn-primary" id="modify-entity"
+                        [routerLink]="['/facture', facture.id, 'edit']"><i class="fa fa-dot-circle-o"></i>
+                        Modifier</button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

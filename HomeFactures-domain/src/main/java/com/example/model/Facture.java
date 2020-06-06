@@ -24,11 +24,17 @@ public class Facture implements Serializable{
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id; 
 	private String numClient;
-	private int numFacture;
+	private String numFacture;
 	private Date dateDebut;
 	private Date dateFin;
-	private String beneficaire;
-	private double montant;
+	private String beneficiaire;
+	private Date delai;
+	private Boolean isPayed;
+	private Double montant;
+	private Integer espaceService;
+	private String numRecu;
+	private String numTransaction;
+	private String reference;
 	@ManyToOne
 	private Fournisseur fournisseur;
 	
