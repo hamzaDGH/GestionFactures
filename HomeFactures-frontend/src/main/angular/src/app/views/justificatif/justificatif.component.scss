@@ -1,0 +1,27 @@
+
+.col-lg-6 {
+ 
+    max-width: 100%;
+  }
+  .env-pagination{
+    width: 100%;
+    text-align: center;
+  }
+  
+  
+  thead th {
+    cursor: pointer;
+  
+    span {
+      visibility: hidden;
+    }
+  
+    &.active {
+      color: #000;
+  
+      span {
+        visibility: visible;
+      }
+    }
+  }
+  

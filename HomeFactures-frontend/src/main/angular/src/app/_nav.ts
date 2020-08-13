@@ -17,6 +17,11 @@ export const navItems: INavData[] = [
     icon: 'icon-speedometer',
   },
   {
+    name : 'Justificatifs',
+    url: '/justificatif',
+    icon: 'icon-speedometer',
+  },
+  {
     title: true,
     name: 'Theme'
   },

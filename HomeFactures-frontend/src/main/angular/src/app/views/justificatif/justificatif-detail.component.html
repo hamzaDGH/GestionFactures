@@ -1,0 +1,49 @@
+<div class="animated fadeIn">
+    <div class="row">
+
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <strong>Fournisseur </strong>
+                </div>
+                <div class="card-body">
+
+
+                    <div class="form-group row">
+                        <label class="col-md-3 col-form-label" for="id">ID</label>
+                        <div class="col-md-9">
+                            <input type="text" name="id" id="id" value="{{fournisseur.id}}" class="form-control"
+                                placeholder="ID" disabled>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-md-3 col-form-label" for="field_nomFournisseur">Nom du Fournisseur </label>
+                        <div class="col-md-9">
+
+                            <input type="text" name="nomFournisseur" id="field_nomFournisseur"
+                                 class="form-control" value="{{fournisseur.nomFournisseur}}" placeholder="Nom du fournisseur" disabled/>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-md-3 col-form-label" for="field_secteur">Sec</label>
+                        <div class="col-md-9">
+                            <input type="text" class="form-control" name="secteur" id="field_secteur"
+                                 value="{{fournisseur.secteur}}" placeholder="Secteur" disabled/>
+                        </div>
+                    </div>
+
+                <div class="card-footer">
+                    <button type="button" class="btn btn-sm btn-danger" (click)="previousState()"><i
+                            class="fa fa-ban"></i> Retour</button>
+                    <button type="button" class="btn btn-sm btn-primary" id="modify-entity"
+                        [routerLink]="['/fournisseur', fournisseur.id, 'edit']"><i class="fa fa-dot-circle-o"></i>
+                        Modifier</button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
