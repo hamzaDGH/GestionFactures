@@ -3,7 +3,7 @@
 
         <div class="col-md-6">
             <div class="card">
-                <form *ngIf="fournisseur" name="deleteForm" (ngSubmit)="confirmDelete(fournisseur?.id!)">
+                <form *ngIf="facture" name="deleteForm" (ngSubmit)="confirmDelete(facture?.id!)">
                     <div class="card-header">
                         <strong>
                             Confirmer l'opération de suppression
@@ -14,7 +14,7 @@
                         <div>
 
 
-                            <p> Etes vous sûr de vouloir supprimer ce fournisseur N°: {{fournisseur?.id}}?
+                            <p> Etes vous sûr de vouloir supprimer cette facture N°: {{facture?.id}}?
                             </p>
                         </div>
                     </div>

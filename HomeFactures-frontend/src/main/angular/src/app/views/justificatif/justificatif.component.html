@@ -1,0 +1,73 @@
+<div>
+    <div class="card">
+      <div class="card-body">
+        <div class="row align-items-center">
+          <div class="col-12 col-xl mb-3 mb-xl-0">
+            <h2 id="page-heading">
+              <span>Fournisseur </span>
+            </h2>
+          </div>
+          <div class="col-6 col-sm-4 col-md-2  mb-3 mb-xl-0">
+            <button type="button" [routerLink]="['/fournisseur/new']" class="btn btn-primary">Ajouter</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="alert alert-warning" id="no-result" *ngIf="fournisseurs?.length === 0">
+      <span jhiTranslate="btpprojectApp.fournisseur.home.notFound">Aucun fournisseur trouvé !</span>
+    </div>
+    <div class="table-responsive" id="entities" *ngIf="fournisseurs?.length > 0">
+      <div class="col-lg-6">
+        <div class="card">
+          <div class="card-header">
+            <i class="fa fa-align-justify"></i> Striped Table
+          </div>
+          <div class="form-group">
+            <input class="form-control" type="text" placeholder="search" [(ngModel)]="searchTerm" />
+          </div>
+          <div class="card-body">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th [class.active]="order === 'id'" (click)="setOrder('id')">ID
+                    <span [hidden]="reverse">▼</span><span [hidden]="!reverse">▲</span>
+                  </th>
+                  <th [class.active]="order === 'nomFournisseur'" (click)="setOrder('nomFournisseur')">Nom Fournisseur
+                    <span [hidden]="reverse">▼</span><span [hidden]="!reverse">▲</span>
+                  </th>
+                  <th [class.active]="order === 'secteur'" (click)="setOrder('secteur')">Secteur
+                    <span [hidden]="reverse">▼</span><span [hidden]="!reverse">▲</span>
+                  </th>
+                  <th> Actions </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr
+                  *ngFor="let fournisseur of  fournisseurs | filter:searchTerm |orderBy: order : reverse:'case-insensitive' | paginate : { itemsPerPage: 10, currentPage: pageNumber} ; let i = index">
+                  <td>{{ fournisseur.id }}</td>
+                  <td>{{ fournisseur.nomFournisseur }}</td>
+                  <td>{{ fournisseur.secteur }}</td>
+                  <td>
+                    <button id="modify-entity" [routerLink]="['/fournisseur', fournisseur.id, 'edit']"
+                      class="btn btn-outline-primary" >
+                      Modifier
+                    </button>
+                    <button id="delete-entity" (click)="delete(fournisseur)" class="btn btn-outline-danger" >
+                      Supprimer
+                    </button>
+                    <button id="view-entity" [routerLink]="['/fournisseur', fournisseur.id, 'view']"
+                      class="btn btn-outline-success" >
+                      Consuler
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <div class="env-pagination">
+              <pagination-controls (pageChange)="pageNumber = $event"></pagination-controls>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

@@ -33,7 +33,7 @@ export class FournisseurUpdateComponent implements OnInit {
   editForm = this.fb.group({
     id: [],
     nomFournisseur: [],
-    Secteur: [],
+    secteur: [],
   });
   constructor(
     protected fournisseurService: FournisseurService,

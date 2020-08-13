@@ -14,10 +14,6 @@ export class FournisseurService {
 
   constructor(protected http: HttpClient) { }
 
-  /* test(fournisseurDesc){
-    return this.http.get(this.resourceUrl+'/test?fournisseurDesc='+fournisseurDesc);
-  } */
-
   create(fournisseur: IFournisseur): Observable<EntityResponseType> {
     return this.http
       .post<IFournisseur>(this.resourceUrl, fournisseur, { observe: 'response' });

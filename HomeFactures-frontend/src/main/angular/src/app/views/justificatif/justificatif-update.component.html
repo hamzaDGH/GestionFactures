@@ -1,0 +1,49 @@
+<div class="animated fadeIn">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <strong>Fournisseur</strong>
+                </div>
+                <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+                    <div class="card-body">
+
+
+                        <div class="form-group row">
+                            <label class="col-md-3 col-form-label" for="id">ID</label>
+                            <div class="col-md-9">
+                                <input type="text" name="id" id="id" formControlName="id" class="form-control"
+                                    placeholder="ID" disabled>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-md-3 col-form-label" for="field_nomFournisseur">Nom du Fournisseur</label>
+                            <div class="col-md-9">
+                                <input type="text" name="nomFournisseur" id="field_nomFournisseur"
+                                    formControlName="nomFournisseur" class="form-control"
+                                    placeholder="Description commande">
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-md-3 col-form-label" for="field_secteur">Secteur</label>
+                            <div class="col-md-9">
+                                <input type="text" class="form-control" name="secteur" id="field_secteur"
+                                    formControlName="secteur" placeholder="Secteur">
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="card-footer">
+                        <button type="button" class="btn btn-sm btn-danger" (click)="previousState()"><i
+                                class="fa fa-ban"></i> Retour</button>
+                        <button type="submit" class="btn btn-sm btn-primary" id="save-entity"><i
+                                class="fa fa-dot-circle-o"></i>
+                            Enregister</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

@@ -51,6 +51,10 @@ export const routes: Routes = [
     },
     children: [
       {
+        path: 'facture',
+        loadChildren:()=> import('./views/facture/facture.module').then(m=>m.FactureModule)
+      },
+      {
         path: 'fournisseur',
         loadChildren:()=> import('./views/fournisseur/fournisseur.module').then(m=>m.FournisseurModule)
       },

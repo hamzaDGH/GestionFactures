@@ -1,19 +1,19 @@
 import { Component } from '@angular/core';
 //import { EventManager} from '../../shared/services/event-manager/EventManager.service';
-import { IFournisseur } from '../../shared/model/fournisseur.model';
-import { FournisseurService } from './fournisseur.service';
+import { IFacture } from '../../shared/model/facture.model';
+import { FactureService } from './facture.service';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { EventManager } from '../../shared/services/event-manager/EventManager.service';
 
 @Component({
-  templateUrl: './fournisseur-delete-dialog.component.html',
-  styleUrls:['./fournisseur-delete-dialog.component.scss']
+  templateUrl: './facture-delete-dialog.component.html',
+  styleUrls:['./facture-delete-dialog.component.scss']
 })
-export class FournisseurDeleteDialogComponent {
-  fournisseur?: IFournisseur;
+export class FactureDeleteDialogComponent {
+  facture?: IFacture;
 
   constructor(
-    protected fournisseurService: FournisseurService,
+    protected fournisseurService: FactureService,
     public activeModal: NgbActiveModal,
     protected eventManager: EventManager
   ) {}

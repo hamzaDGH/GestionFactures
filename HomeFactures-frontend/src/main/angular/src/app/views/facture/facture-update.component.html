@@ -1,0 +1,157 @@
+<div class="animated fadeIn">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <strong>Facture</strong>
+                </div>
+                <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+                    <div class="card-body">
+
+
+                        <div class="form-group row">
+                            <label class="col-md-3 col-form-label" for="id">ID</label>
+                            <div class="col-md-9">
+                                <input type="text" name="id" id="id" formControlName="id" class="form-control"
+                                    placeholder="ID" disabled>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-md-3 col-form-label" for="field_fournisseur"> Fournisseur  <span
+                                    style="color: red;">(*)</span></label>
+                            <div class="col-md-9">
+                                <select id="field_fournisseur" name="fournisseur" formControlName="fournisseur"
+                                    class="form-control" placeholder="Fournisseur">
+                                    <option *ngIf="!editForm.get('fournisseur')!.value" [ngValue]="null" selected>
+                                    </option>
+                                    <option
+                                        [ngValue]="fournisseurOption.id === editForm.get('fournisseur')!.value?.id ? editForm.get('fournisseur')!.value : fournisseurOption"
+                                        *ngFor="let fournisseurOption of fournisseurs; trackBy: trackById">
+                                        {{ fournisseurOption.nomFournisseur }}</option>
+                                </select>
+                                <div
+                                    *ngIf="editForm.get('fournisseur')!.invalid && (editForm.get('fournisseur')!.dirty || editForm.get('fournisseur')!.touched)">
+                                    <small class="form-text text-danger"
+                                        *ngIf="editForm.get('fournisseur')?.errors?.required">
+
+                                        <span class="help-block"> erreur </span>
+                                    </small>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="form-group row">
+                            <label class="col-md-3 col-form-label" for="field_numClient">Numéro du client</label>
+                            <div class="col-md-9">
+                                <input type="text" name="numClient" id="field_numClient" formControlName="numClient"
+                                    class="form-control" placeholder="Numéro client">
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-md-3 col-form-label" for="field_numFacture">Numéro de la facture</label>
+                            <div class="col-md-9">
+                                <input type="number" class="form-control" name="numFacture" id="field_numFacture"
+                                    formControlName="numFacture" placeholder="Numéro de la facture">
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-md-3 col-form-label" for="field_espaceService">Espace service</label>
+                            <div class="col-md-9">
+                                <input type="number" class="form-control" name="espaceService" id="field_espaceService"
+                                    formControlName="espaceService" placeholder="Espace de service">
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-md-3 col-form-label" for="field_numRecu">Numéro de reçue</label>
+                            <div class="col-md-9">
+                                <input type="text" class="form-control" name="numRecu" id="field_numRecu"
+                                    formControlName="numRecu" placeholder="Numéro de reçue">
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-md-3 col-form-label" for="field_numTransaction">Numéro de transaction</label>
+                            <div class="col-md-9">
+                                <input type="text" class="form-control" name="numTransaction" id="field_numTransaction"
+                                    formControlName="numTransaction" placeholder="Numéro de la transaction">
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-md-3 col-form-label" for="field_reference">Référence</label>
+                            <div class="col-md-9">
+                                <input type="text" class="form-control" name="reference" id="field_reference"
+                                    formControlName="reference" placeholder="Numéro de la Référence">
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-md-3 col-form-label" for="field_montant">Montant</label>
+                            <div class="col-md-9">
+                                <input type="number" class="form-control" name="montant" id="field_montant"
+                                    formControlName="montant" placeholder="Montant à payer">
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-md-3 col-form-label" for="field_dateDebut">Date de la transaction</label>
+                            <div class="col-md-9">
+                                <input type="date" class="form-control" name="dateDebut" id="field_dateDebut"
+                                    formControlName="dateDebut" placeholder="Choisir une date">
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-md-3 col-form-label" for="field_dateFin">Date d'écheance</label>
+                            <div class="col-md-9">
+                                <input type="date" class="form-control" name="dateFin" id="field_dateFin"
+                                    formControlName="dateFin" placeholder="Choisir une date">
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-md-3 col-form-label" for="field_beneficiaire">Bénéficiaire</label>
+                            <div class="col-md-9">
+                                <input type="text" class="form-control" name="beneficiaire" id="field_beneficiaire"
+                                    formControlName="beneficiaire" placeholder="Nom du bénéficiaire">
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-md-3 col-form-label" for="field_delai">Date limite de paiement</label>
+                            <div class="col-md-9">
+                                <input type="text" class="form-control" name="delai" id="field_delai"
+                                    formControlName="delai" placeholder="Délai à ne pas dépasser">
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-md-3 col-form-label" for="field_isPayed">Payée ?</label>
+                            <div class="col-md-9">
+                                <select class="form-control" name="isPayed" id="field_isPayed" formControlName="isPayed"
+                                    placeholder="Facture déjà payée ?">
+                                    <option [ngValue]="true">Oui</option>
+                                    <option [ngValue]="false">Non</option>
+                                </select>
+                            </div>
+                        </div>
+
+
+                    </div>
+                    <div class="card-footer">
+                        <button type="button" class="btn btn-sm btn-danger" (click)="previousState()"><i
+                                class="fa fa-ban"></i> Retour</button>
+                        <button type="submit" class="btn btn-sm btn-primary" id="save-entity"><i
+                                class="fa fa-dot-circle-o"></i>
+                            Enregister</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
